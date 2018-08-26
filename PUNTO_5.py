@@ -102,7 +102,7 @@ A7 = Tree('>', P,Q)
 A8 = Tree('O', noP, Q)
 
 #*****************************
-print  Equivalencia(P, noP)+"\n"
+print  Equivalencia(A1, A2)+"\n"
 print  Equivalencia(A3, A4)+"\n"
 print  Equivalencia(A5, A6)+"\n"
 print  Equivalencia(A7, A8)+"\n"
