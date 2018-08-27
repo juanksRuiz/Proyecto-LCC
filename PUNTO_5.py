@@ -101,6 +101,22 @@ A6 = Tree('-',  None, Tree('O', noP, noQ))
 A7 = Tree('>', P,Q)
 A8 = Tree('O', noP, Q)
 
+#Ejercicio adicional(10%)
+A9 = Tree('-',None,A7)
+A10 = Tree('O',R,S)
+A11 = Tree('>',A9,A10)
+A12 = Tree('Y',A11,T)
+
+res = []
+for itp in interp:
+	if(Valor_verdad(A12,itp) == 1):
+		res.append(itp)
+
+print "Formula: " + str(In_order(A12))
+print "Interpretaciones que  a la hacen verdadera: "
+for i in res:
+	print i,'\n'
+
 #*****************************
 print  Equivalencia(A1, A2)+"\n"
 print  Equivalencia(A3, A4)+"\n"
