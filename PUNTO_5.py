@@ -1,6 +1,6 @@
 #-*- coding: utf-8 -*-
 conectivos_Binarios = ['Y','O','>']
-letrasProposicionales = ['p','q','r']
+letrasProposicionales = ['p','q','r', 's','t']
 
 
 #CLASES Y FUNCIONES
@@ -61,7 +61,7 @@ def Equivalencia(Arb1, Arb2):
     return " Si, son equivalentes"
 
 #############################################################################################################################################################################
-#Creamos todas las interpretaciones posibles para tres letras proposicionales(p,q,r)
+#Creamos todas las interpretaciones posibles para tres letras proposicionales(p,q,r,s,t)
 
 interp = []
 prim_inter  = {}
@@ -88,6 +88,8 @@ for a in letrasProposicionales:
 P = Tree('p',None, None )
 Q = Tree('q',None,None )
 R = Tree('r', None, None)
+S = Tree('s', None, None)
+T = Tree('t', None, None)
 noP = Tree('-', None, P)
 noQ = Tree('-', None, Q)
 
@@ -101,7 +103,14 @@ A6 = Tree('-',  None, Tree('O', noP, noQ))
 A7 = Tree('>', P,Q)
 A8 = Tree('O', noP, Q)
 
+print "**EJERCICIO 5** \n"
+print  Equivalencia(A1, A2)+"\n"
+print  Equivalencia(A3, A4)+"\n"
+print  Equivalencia(A5, A6)+"\n"
+print  Equivalencia(A7, A8)+"\n"
+
 #Ejercicio adicional(10%)
+
 A9 = Tree('-',None,A7)
 A10 = Tree('O',R,S)
 A11 = Tree('>',A9,A10)
@@ -111,14 +120,10 @@ res = []
 for itp in interp:
 	if(Valor_verdad(A12,itp) == 1):
 		res.append(itp)
-
+print "\n\n**EJERCICIO DEL 10%**\n"
 print "Formula: " + str(In_order(A12))
-print "Interpretaciones que  a la hacen verdadera: "
+print "Interpretaciones que  la hacen verdadera: "
 for i in res:
 	print i,'\n'
 
 #*****************************
-print  Equivalencia(A1, A2)+"\n"
-print  Equivalencia(A3, A4)+"\n"
-print  Equivalencia(A5, A6)+"\n"
-print  Equivalencia(A7, A8)+"\n"
