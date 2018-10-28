@@ -122,7 +122,7 @@ def Tableaux(lista_hojas, letrasProposicionales):
 	marcas = ['x', 'o']
 	interpretaciones = [] # Lista para guardar interpretaciones que satisfacen la raiz
 
-	while any(x not in marcas for x in lista_hojas) and len(interpretaciones)<1000: # Verifica si hay hojas no marcadas
+	while any(x not in marcas for x in lista_hojas): # Verifica si hay hojas no marcadas
 
 		# Hay hojas sin marcar
 		# Crea la lista de hojas sin marcar
