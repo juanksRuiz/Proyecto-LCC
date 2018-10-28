@@ -239,7 +239,17 @@ def dibujar_tablero(f, n):
             facecolor='purple'), '-b':patches.Rectangle(*[(g+width+h , 0), width, height],\
             facecolor='green'), '-C':patches.Rectangle(*[(g+2*(width+h) , height), width, height],\
             facecolor='purple'), '-c':patches.Rectangle(*[(g+2*(width+h) , 0), width, height],\
-            facecolor='green')  }
+            facecolor='green')}
+	    #, 'Np':patches.Rectangle(*[(g , 2*h+4*height), width, height],\
+            #facecolor='gray'), 'Nq':patches.Rectangle(*[(g+width+h , 2*h+4*height), width, height],\
+            #facecolor='gray'), 'Nr':patches.Rectangle(*[(g+2*(width+h) , 2*h+4*height), width, height],\
+            #facecolor='gray'), 'Ns':patches.Rectangle(*[(g , 2*height+h), width, height],\
+            #facecolor='gray'), 'Nt':patches.Rectangle(*[(g+width+h , 2*height+h), width, height],\
+            #facecolor='gray'), 'Nx':patches.Rectangle(*[(g+2*(width+h) , 2*height+h), width, height],\
+            #facecolor='gray'), 'Na':patches.Rectangle(*[(g , 0), width, height],\
+            #facecolor='gray'), 'Nb':patches.Rectangle(*[(g+width+h , 0), width, height],\
+            #facecolor='gray'), 'Nc':patches.Rectangle(*[(g+2*(width+h) , 0), width, height],\
+            #facecolor='gray') }
         #Creamos lista con rectangulos dependiendo de la formula ingresada
         ##########################################
         tangulos2 = []

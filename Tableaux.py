@@ -121,8 +121,10 @@ def Tableaux(lista_hojas, letrasProposicionales):
 
 	marcas = ['x', 'o']
 	interpretaciones = [] # Lista para guardar interpretaciones que satisfacen la raiz
-
-	while any(x not in marcas for x in lista_hojas): # Verifica si hay hojas no marcadas
+	#Si no se le pone un limite, el calculo estimado es que llegue a 597000 hojas sin marcar y ahí si empiece a bajar.
+	#El calculo estimado de modelos posibles es 768  
+	#Otra opcion agregarle a la condicion del while "and len(interpretaciones)<n", n es el numero de modelos para la formula
+	while any(x not in marcas for x in lista_hojas) and len(interpretaciones)<200: # Verifica si hay hojas no marcadas
 
 		# Hay hojas sin marcar
 		# Crea la lista de hojas sin marcar
@@ -131,19 +133,6 @@ def Tableaux(lista_hojas, letrasProposicionales):
 		# Selecciona una hoja no marcada
 		hoja = choice(hojas_no_marcadas)
 		#print "Trabajando con hoja: ", imprime_hoja(hoja)
-		"""if(len(hojas_no_marcadas)>=20000): #Limite de hojas sin marcar
-			INTS = []
-			for i in interpretaciones:
-				aux = [Inorder(l) for l in i]
-				INTS.append(aux)
-				print aux
-
-		# Eliminamos repeticiones dentro de cada interpretacion
-			INTS = [list(set(i)) for i in INTS]
-			# Eliminamos interpretaciones repetidas
-			INTS_set = set(tuple(x) for x in INTS)
-			INTS = [list(x) for x in INTS_set]
-			return "Satisfacible" , INTS"""
 		# Busca formulas que no son literales
 		formulas_no_literales = []
 		for x in hoja:
@@ -261,14 +250,6 @@ def Tableaux(lista_hojas, letrasProposicionales):
 			if hojaConsistente: # Se recorrieron todos los literales y no esta el complementario
 				
 				#print "La hoja " + imprime_hoja(hoja) +  " es consistente :)"
-				
-				"""for i in letrasProposicionales:
-					Letra = Tree(i, None, None)
-					Negacion = Tree('-', None, Letra)
-					elegir_letra = [Letra, Negacion]
-					print "letra agregada"
-					if (Letra not in hoja) or (Negacion not in hoja):
-						hoja.append(choice(elegir_letra))"""
 						
 						
 				interpretaciones.append(hoja) # Guarda la interpretacion que satisface la raiz
@@ -278,28 +259,31 @@ def Tableaux(lista_hojas, letrasProposicionales):
 	# Dice si la raiz es inconsistente
 	# print "Hay " + str(len(interpretaciones)) + u" interpretaciones que satisfacen la fórmula"
 	if len(interpretaciones) > 0:
-		print u"La fórmula es satisfacible por las siguientes interpretaciones: "
+		#print u"La fórmula es satisfacible por las siguientes interpretaciones: "
 
 		# Interpreta como string la lista de interpretaciones
 		INTS = []
 		for i in interpretaciones:
 			aux = [Inorder(l) for l in i]
 			INTS.append(aux)
-			print aux
+			#print aux
 
 		# Eliminamos repeticiones dentro de cada interpretacion
 		INTS = [list(set(i)) for i in INTS]
 		# Eliminamos interpretaciones repetidas
-		INTS_set = set(tuple(x) for x in INTS)
-		INTS = [list(x) for x in INTS_set]
+		INTS_set2 = set(tuple(x) for x in INTS)
+		INTS = [list(x) for x in INTS_set2]
+		#Agregamos, por simplicidad, las letras que faltan en cada modelo como literales verdaderos (todos lo que pueden llegar a faltar son literales de trancon o no)  
 		for j in INTS:
 			for i in letrasProposicionales:
 				letra = [i, '-'+i]
-				
 				if (i not in j) and ('-'+i not in j):
+				#Agregamos literal verdadero, es decir que hay trancon, por lo tanto el rectangulo queda rojo:
 					j.append(i)
-		
-		print "Hay " + str(len(INTS)) + u" interpretaciones que satisfacen la fórmula"
+		# Eliminamos interpretaciones repetidas
+		INTS_set = set(tuple(x) for x in INTS)
+		INTS = [list(x) for x in INTS_set]
+		#print "Hay " + str(len(INTS)) + u" interpretaciones que satisfacen la fórmula"
 
 		return "Satisfacible", INTS
 	else:
@@ -310,34 +294,3 @@ def Tableaux(lista_hojas, letrasProposicionales):
 # Fin definicion de objeto tree y funciones
 ##############################################################################
 
-
-from random import choice
-
-# Crea letras proposicionales
-"""letrasProposicionales = list('PpQqRrSsTtXxAaBbCc')
-
-# Crea formula de prueba
-R1_cam1 = 'R-Q-YP-YrqYrpYOqpYO>'
-R1_cam2 = 'X-T-YS-YxtYxsYOtsYO>'
-R1_cam3 = 'C-B-YA-YcbYcaYObaYO>'
-Regla_1 = R1_cam3+R1_cam2+'Y'+R1_cam1+'Y'
-Regla_2 = 'CBYAYXTYSYORQYPYO'
-R3_cam1 = 'CBYAYXTYSYO-RQYPYYP>'
-R3_cam2 = 'CBYAYRQYPYO-XTYSYYS>'
-R3_cam3 = 'RQYPYXTYSYO-CBYAYYA>'
-Regla_3 = R3_cam3+R3_cam2+'Y'+R3_cam1+'Y'
-
-Formula_final = Regla_3+Regla_2+'Y'+Regla_1+'Y'
-A = StringtoTree(Regla_1, letrasProposicionales)
-B = StringtoTree(Regla_2, letrasProposicionales)
-C = StringtoTree(Regla_3, letrasProposicionales)
-#print Inorder(B)
-#print Inorder(C)
-#print Inorder(A)
-
-
-# Las hojas son conjuntos de formulas o marcas 'x' o 'o'
-
-lista_hojas = [[A]] # Inicializa la lista de hojas
-
-#print(Tableaux(lista_hojas, letrasProposicionales))"""
