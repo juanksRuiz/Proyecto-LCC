@@ -205,41 +205,41 @@ def dibujar_tablero(f, n):
         #        entonces su rectangulo será verde.
         diccionario = {'P': patches.Rectangle(*[(g , 2*h+5*height), width, height],\
             facecolor='cyan'), 'p':patches.Rectangle(*[(g , 2*h+4*height), width, height],\
-            facecolor='green'), 'Q':patches.Rectangle(*[(g+width+h , 2*h+5*height), width, height],\
+            facecolor='red'), 'Q':patches.Rectangle(*[(g+width+h , 2*h+5*height), width, height],\
             facecolor='cyan'), 'q':patches.Rectangle(*[(g+width+h , 2*h+4*height), width, height],\
-            facecolor='green'), 'R':patches.Rectangle(*[(g+2*(width+h) , 2*h+5*height), width, height],\
+            facecolor='red'), 'R':patches.Rectangle(*[(g+2*(width+h) , 2*h+5*height), width, height],\
             facecolor='cyan'), 'r':patches.Rectangle(*[(g+2*(width+h) , 2*h+4*height), width, height],\
-            facecolor='green'), 'S':patches.Rectangle(*[(g , 3*height+h), width, height],\
+            facecolor='red'), 'S':patches.Rectangle(*[(g , 3*height+h), width, height],\
             facecolor='cyan'), 's':patches.Rectangle(*[(g , 2*height+h), width, height],\
-            facecolor='green'), 'T':patches.Rectangle(*[(g+width+h , 3*height+h), width, height],\
+            facecolor='red'), 'T':patches.Rectangle(*[(g+width+h , 3*height+h), width, height],\
             facecolor='cyan'), 't':patches.Rectangle(*[(g+width+h , 2*height+h), width, height],\
-            facecolor='green'), 'X':patches.Rectangle(*[(g+2*(width+h) ,3*height+h), width, height],\
+            facecolor='red'), 'X':patches.Rectangle(*[(g+2*(width+h) ,3*height+h), width, height],\
             facecolor='cyan'), 'x':patches.Rectangle(*[(g+2*(width+h) , 2*height+h), width, height],\
-            facecolor='green'), 'A':patches.Rectangle(*[(g , height), width, height],\
+            facecolor='red'), 'A':patches.Rectangle(*[(g , height), width, height],\
             facecolor='cyan'), 'a':patches.Rectangle(*[(g , 0), width, height],\
-            facecolor='green'), 'B':patches.Rectangle(*[(g+width+h , height), width, height],\
+            facecolor='red'), 'B':patches.Rectangle(*[(g+width+h , height), width, height],\
             facecolor='cyan'), 'b':patches.Rectangle(*[(g+width+h , 0), width, height],\
-            facecolor='green'), 'C':patches.Rectangle(*[(g+2*(width+h) , height), width, height],\
+            facecolor='red'), 'C':patches.Rectangle(*[(g+2*(width+h) , height), width, height],\
             facecolor='cyan'), 'c':patches.Rectangle(*[(g+2*(width+h) , 0), width, height],\
-            facecolor='green'), '~P': patches.Rectangle(*[(g , 2*h+5*height), width, height],\
-            facecolor='purple'), '~p':patches.Rectangle(*[(g , 2*h+4*height), width, height],\
-            facecolor='red'), '~Q':patches.Rectangle(*[(g+width+h , 2*h+5*height), width, height],\
-            facecolor='purple'), '~q':patches.Rectangle(*[(g+width+h , 2*h+4*height), width, height],\
-            facecolor='red'), '~R':patches.Rectangle(*[(g+2*(width+h) , 2*h+5*height), width, height],\
-            facecolor='purple'), '~r':patches.Rectangle(*[(g+2*(width+h) , 2*h+4*height), width, height],\
-            facecolor='red'), '~S':patches.Rectangle(*[(g , 3*height+h), width, height],\
-            facecolor='purple'), '~s':patches.Rectangle(*[(g , 2*height+h), width, height],\
-            facecolor='red'), '~T':patches.Rectangle(*[(g+width+h , 3*height+h), width, height],\
-            facecolor='purple'), '~t':patches.Rectangle(*[(g+width+h , 2*height+h), width, height],\
-            facecolor='red'), '~X':patches.Rectangle(*[(g+2*(width+h) ,3*height+h), width, height],\
-            facecolor='purple'), '~x':patches.Rectangle(*[(g+2*(width+h) , 2*height+h), width, height],\
-            facecolor='red'), '~A':patches.Rectangle(*[(g , height), width, height],\
-            facecolor='purple'), '~a':patches.Rectangle(*[(g , 0), width, height],\
-            facecolor='red'), '~B':patches.Rectangle(*[(g+width+h , height), width, height],\
-            facecolor='purple'), '~b':patches.Rectangle(*[(g+width+h , 0), width, height],\
-            facecolor='red'), '~C':patches.Rectangle(*[(g+2*(width+h) , height), width, height],\
-            facecolor='purple'), '~c':patches.Rectangle(*[(g+2*(width+h) , 0), width, height],\
-            facecolor='red')  }
+            facecolor='red'), '-P': patches.Rectangle(*[(g , 2*h+5*height), width, height],\
+            facecolor='purple'), '-p':patches.Rectangle(*[(g , 2*h+4*height), width, height],\
+            facecolor='green'), '-Q':patches.Rectangle(*[(g+width+h , 2*h+5*height), width, height],\
+            facecolor='purple'), '-q':patches.Rectangle(*[(g+width+h , 2*h+4*height), width, height],\
+            facecolor='green'), '-R':patches.Rectangle(*[(g+2*(width+h) , 2*h+5*height), width, height],\
+            facecolor='purple'), '-r':patches.Rectangle(*[(g+2*(width+h) , 2*h+4*height), width, height],\
+            facecolor='green'), '-S':patches.Rectangle(*[(g , 3*height+h), width, height],\
+            facecolor='purple'), '-s':patches.Rectangle(*[(g , 2*height+h), width, height],\
+            facecolor='green'), '-T':patches.Rectangle(*[(g+width+h , 3*height+h), width, height],\
+            facecolor='purple'), '-t':patches.Rectangle(*[(g+width+h , 2*height+h), width, height],\
+            facecolor='green'), '-X':patches.Rectangle(*[(g+2*(width+h) ,3*height+h), width, height],\
+            facecolor='purple'), '-x':patches.Rectangle(*[(g+2*(width+h) , 2*height+h), width, height],\
+            facecolor='green'), '-A':patches.Rectangle(*[(g , height), width, height],\
+            facecolor='purple'), '-a':patches.Rectangle(*[(g , 0), width, height],\
+            facecolor='green'), '-B':patches.Rectangle(*[(g+width+h , height), width, height],\
+            facecolor='purple'), '-b':patches.Rectangle(*[(g+width+h , 0), width, height],\
+            facecolor='green'), '-C':patches.Rectangle(*[(g+2*(width+h) , height), width, height],\
+            facecolor='purple'), '-c':patches.Rectangle(*[(g+2*(width+h) , 0), width, height],\
+            facecolor='green')  }
         #Creamos lista con rectangulos dependiendo de la formula ingresada
         ##########################################
         tangulos2 = []
@@ -270,10 +270,10 @@ import csv
 from sys import argv
 print "Listo!"
 
-script, data_archivo = argv
+#script, data_archivo = argv
 
 
-with open(data_archivo) as csv_file:
+"""with open(data_archivo) as csv_file:
     data = csv.reader(csv_file, delimiter=',')
     contador = 1
     for l in data:
@@ -283,4 +283,4 @@ with open(data_archivo) as csv_file:
         dibujar_tablero(l, contador)
         contador += 1
 
-csv_file.close()
+csv_file.close()"""
