@@ -11,7 +11,7 @@ print "Importados!"
 # Guardo el tiempo al comenzar el procedimiento
 start = timer()
 
-letrasProposicionales = list("PpQqRrSsTtXxAaBbCc")
+letrasProposicionales = list('PpQqRrSsTtXxAaBbCc')
 
 # Crea formula de prueba
 R1_cam1 = 'R-Q-YP-YrqYrpYOqpYO>'
@@ -64,9 +64,11 @@ if OK == 'Satisfacible':
 
         import visualizacion as V
         contador = 1
-        for i in range(6):
-            print "Trabajando con literales: ", INTS[i]
-            V.dibujar_tablero(INTS[i],contador)
+	print len(INTS)
+        for i in range(300):
+            print "Trabajando con literales: ", i
+            V.dibujar_tablero(i,contador)
             contador += 1
 
 print "FIN"
+
