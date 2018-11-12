@@ -41,12 +41,7 @@ def DPLL(S,I):
                 
         return ("Satifacible", I)
     DPLL(S, I)
-    #Verificacion de clausulas vacias
-    
-    
-    #----------------------------------------------#
 
-    
 
 
 def Max(S):
