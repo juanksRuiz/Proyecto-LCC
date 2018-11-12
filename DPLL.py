@@ -43,7 +43,7 @@ def DPLL(S,I):
     DPLL(S, I)
 
 
-
+#Busca el literal con mas reiteraciones en un conjunto de clausulas
 def Max(S):
     dic = {}
     for c in S:
@@ -61,7 +61,7 @@ def Max(S):
             return i
 
 
-
+#Busca literal unitario en un conjunto de clausulas
 def buscarCU(S):
     if(len(S)!=0):
         for c in S:
@@ -70,7 +70,7 @@ def buscarCU(S):
     return False
 
 def UnitPropagation(S):
-    #print "S: ",S
+    
     #Asumiendo que no hay clausulas vacias
     lit = ''
     for c in S:
