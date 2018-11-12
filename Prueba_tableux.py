@@ -34,10 +34,13 @@ R4_cam1 = 'R-Q-YP-YR-Q-OP-O>'
 R4_cam2 = 'X-T-YS-YX-T-OS-O>'
 R4_cam3 = 'C-B-YA-YC-B-OA-O>'
 Regla_4 =  R4_cam3+R4_cam2+'Y'+R4_cam1+'Y'
+ 
+#Regla_5
+Regla_5 = 'b-a-YtsYYqp-YY'
 
 #Creamos fórmula final
 Formula_final = Regla_3+Regla_2+'Y'+Regla_1+'Y'
-Formula_final = Formula_final+Regla_4+'Y'
+Formula_final = Formula_final+Regla_4+'Y'+Regla_5+'Y'
 
 
 A = T.StringtoTree(Formula_final,letrasProposicionales)

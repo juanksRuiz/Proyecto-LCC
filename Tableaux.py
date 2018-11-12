@@ -124,12 +124,14 @@ def Tableaux(lista_hojas, letrasProposicionales):
 	#Si no se le pone un limite, el calculo estimado es que llegue a 597000 hojas sin marcar y ahí si empiece a bajar.
 	#El calculo estimado de modelos posibles es 768  
 	#Otra opcion agregarle a la condicion del while "and len(interpretaciones)<n", n es el numero de modelos para la formula
-	while any(x not in marcas for x in lista_hojas) and len(interpretaciones)<200: # Verifica si hay hojas no marcadas
+	while any(x not in marcas for x in lista_hojas) and len(interpretaciones)<15: # Verifica si hay hojas no marcadas
 
 		# Hay hojas sin marcar
 		# Crea la lista de hojas sin marcar
 		hojas_no_marcadas = [x for x in lista_hojas if x not in marcas]
 		print u"Cantidad de hojas sin marcar: ", len(hojas_no_marcadas)
+		print u"Tamaño interpretaciones: ", len(interpretaciones)
+		print "\n"
 		# Selecciona una hoja no marcada
 		hoja = choice(hojas_no_marcadas)
 		#print "Trabajando con hoja: ", imprime_hoja(hoja)
