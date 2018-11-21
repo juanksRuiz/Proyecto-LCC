@@ -48,18 +48,24 @@ def DPLL(S,I):
         else:
             I[lit] = True
         S2 = removeLit(lit, S1)
-        return DPLL(S2, I)
+        return DPLL(S2,I)
+        """
+        OK, I2=  DPLL(S2, I)
+        if OK == "Satisfacible":
+			return "Satisfacible", I2
+        elif len(lit) > 0:
+            if '-' in lit:
+                litback = lit[1:]
+                I[litback] = True
+                return DPLL(S2,I2)
+            else:
+                I[lit] = False
+                return DPLL(S2,I2)
+        else:
+			return "Insatisfacible", {}
         
-        
-    
-    
-    
-
-
-
 
     
-    """
     while((len(x) != 0 for x in S) and len(S)>0):
         print "S antes: ",S
         S,lit = UnitPropagation(S)
@@ -187,7 +193,7 @@ R4_cam2 = 'X-T-YS-YX-T-OS-O>'
 R4_cam3 = 'C-B-YA-YC-B-OA-O>'
 Regla_4 =  R4_cam3+R4_cam2+'Y'+R4_cam1+'Y'
  
-
+r= Regla_4+Regla_3+'Y'
 #Regla_5
 Regla_5 = 'b-a-YtsYYqp-YY'
 
@@ -195,7 +201,7 @@ Regla_5 = 'b-a-YtsYYqp-YY'
 Formula_final = Regla_3+Regla_2+'Y'+Regla_1+'Y'
 Formula_final = Formula_final+Regla_4+'Y'+Regla_5+'Y'
 
-A = cn.StringtoTree(Regla_4, letrasProposicionales)
+A = cn.StringtoTree(Formula_final, letrasProposicionales)
 
 #print("Trabajando con la fórmula: ", cn.Inorder(A))
 
