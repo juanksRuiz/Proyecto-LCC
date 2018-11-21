@@ -10,8 +10,56 @@ def DPLL(S,I):
     #I comienza vacio
     #Eliminando clausulas unitarias
     
+    #Eliminamos todas las clausulas unitarias
+    S1, lit = UnitPropagation(S)
+    print S1
+    while(lit != 'N'):
+        print "Listo"
+        if ([] in S1):
+            print S1
+            return "Insatisfacible", {}
+        elif len(S1)==0:
+            if '-' in lit:
+                I[lit[1:]] = False
+            else:
+                I[lit] = True
+
+            return "Satisfacible", I
+        else:
+            if '-' in lit:
+                I[lit[1:]] = False
+            else:
+                I[lit] = True
+
+            S2, lit2 = UnitPropagation(S1)
+            S=S1
+            S1=S2
+            lit = lit2
+
+    if([] in S1):
+        return "Insatisfacible", {}
+    elif len(S1)==0:
+        return "Satisfacible", I
+    else:
+        print "Listo"
+        lit = S1[0][0]
+        if '-' in lit:
+            I[lit[1:]] = False
+        else:
+            I[lit] = True
+        S2 = removeLit(lit, S1)
+        return DPLL(S2, I)
+        
+        
+    
+    
+    
+
+
+
 
     
+    """
     while((len(x) != 0 for x in S) and len(S)>0):
         print "S antes: ",S
         S,lit = UnitPropagation(S)
@@ -40,7 +88,7 @@ def DPLL(S,I):
 
                 
         return ("Satifacible", I)
-    DPLL(S, I)
+    DPLL(S, I)"""
 
 
 #Busca el literal con mas reiteraciones en un conjunto de clausulas
@@ -70,8 +118,7 @@ def buscarCU(S):
     return False
 
 def UnitPropagation(S):
-    
-    #Asumiendo que no hay clausulas vacias
+    print "Trabajando con: ", S
     lit = ''
     for c in S:
         if len(c) == 1:
@@ -82,18 +129,18 @@ def UnitPropagation(S):
             print "literal unitario encontrado: ",lit
             break
 
-   
+
     #Caso en el que hay una clausula unitaria
     if len(lit) == 1 or len(lit) == 2:
         S = removeLit(lit,S)
+        return S, lit 
 
     
     else:
         #No hay clausulas unitarias
-        lit = Max(S)
-        print "literal unitario encontrado: ",lit
-        S = removeLit(lit,S)
-    return S, lit
+        return S, 'N'
+        
+    
         
 def removeLit(lit,S):
     S2 = []
@@ -140,6 +187,7 @@ R4_cam2 = 'X-T-YS-YX-T-OS-O>'
 R4_cam3 = 'C-B-YA-YC-B-OA-O>'
 Regla_4 =  R4_cam3+R4_cam2+'Y'+R4_cam1+'Y'
  
+
 #Regla_5
 Regla_5 = 'b-a-YtsYYqp-YY'
 
@@ -147,7 +195,7 @@ Regla_5 = 'b-a-YtsYYqp-YY'
 Formula_final = Regla_3+Regla_2+'Y'+Regla_1+'Y'
 Formula_final = Formula_final+Regla_4+'Y'+Regla_5+'Y'
 
-A = cn.StringtoTree(Formula_final, letrasProposicionales)
+A = cn.StringtoTree(Regla_4, letrasProposicionales)
 
 #print("Trabajando con la fórmula: ", cn.Inorder(A))
 
@@ -185,14 +233,14 @@ while OK:
 	OK, A = cn.aplicaDistributiva(A)
 
 conjuntoClausulas = cn.formaClausal(A)
-ccPrincipal = conjuntoClausulas
+
 #----------------------------------------------------------------------------------------#
 
 #El código corre con esta formula:
-S = [['p'],['-p','q','-r'],['q','r']]
+S = [['p', 'q'], ['-p', 'q', 'r'], ['p', 'q', 'r']]
 Sprincipal = S
 #----------------------------------------------------------#
 
 I= {}
-print DPLL(S, I)
+print DPLL(conjuntoClausulas, I)
 
